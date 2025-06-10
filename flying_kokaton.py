@@ -21,14 +21,28 @@ def main():
         for event in pg.event.get():
             if event.type == pg.QUIT: return
         key_lst = pg.key.get_pressed()#キーの降下状態を取得
-        if key_lst [pg.K_UP]:#上キーが押されたら
-            kk_rct.move_ip((0,-1))#上に移動
-        if key_lst [pg.K_DOWN]:
-            kk_rct.move_ip((0,1))
-        if key_lst [pg.K_LEFT]:
-            kk_rct.move_ip((-1,0))
-        if key_lst [pg.K_RIGHT]:
-            kk_rct.move_ip((1,0))
+        # if key_lst [pg.K_UP]:#上キーが押されたら
+        #     kk_rct.move_ip((0,-1))#上に移動
+        # if key_lst [pg.K_DOWN]:
+        #     kk_rct.move_ip((0,1))
+        # if key_lst [pg.K_LEFT]:
+        #     kk_rct.move_ip((-1,0))
+        # if key_lst [pg.K_RIGHT]:
+        #     kk_rct.move_ip((1,0))
+        
+        dx,dy = 0,0
+        if key_lst[pg.K_RIGHT]:
+            dx=1
+        elif key_lst[pg.K_LEFT]:
+            dx=-2
+        else:
+            dx=-1
+        if key_lst[pg.K_UP]:
+            dy=-1
+        elif key_lst[pg.K_DOWN]:
+            dy=1
+        kk_rct.move_ip(dx,dy)
+
         x=tmr%3200
         screen.blit(bg_img, [-x, 0])#1枚目
         screen.blit(bg_img2, [-x+1600, 0])#2枚目
